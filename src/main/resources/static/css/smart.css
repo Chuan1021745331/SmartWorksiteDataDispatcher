@@ -1,0 +1,157 @@
+html, body
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/*^_^*------容器布局------*^_^*/
+.sm-left
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: flex-start;
+    align-items: center;
+}
+.sm-right
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+.sm-center
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+    align-items: center;
+}
+.sm-center-horizontal
+{
+
+}
+.sm-center-vertical
+{
+
+}
+
+/*^_^*------组件------*^_^*/
+
+/*^_^*------尺寸------*^_^*/
+.sm-width-100-per
+{
+    width: 100%;
+}
+.sm-width-60-per
+{
+    width: 60%;
+}
+.sm-width-50-per
+{
+    width: 50%;
+}
+.sm-height-100-per
+{
+    height: 100%;
+}
+.sm-height-20-per
+{
+    height: 20%;
+}
+.sm-height-10-per
+{
+    height: 10%;
+}
+.sm-height-8-per
+{
+    height: 8%;
+}
+.sm-height-5-per
+{
+    height: 5%;
+}
+.sm-text-size-2-em
+{
+    font-size: 2em;
+}
+.sm-text-size-1point5-em
+{
+    font-size: 1.5em;
+}
+.sm-text-size-1-em
+{
+    font-size: 1em;
+}
+.sm-text-size-point5-em
+{
+    font-size: .5em;
+}
+
+/*^_^*------间距------*^_^*/
+.sm-padding-left-25px
+{
+    padding-left: 25px;
+}
+.sm-padding-left-20px
+{
+    padding-left: 20px;
+}
+.sm-padding-left-15px
+{
+    padding-left: 15px;
+}
+.sm-padding-left-10px
+ {
+     padding-left: 10px;
+ }
+.sm-padding-left-5px
+{
+    padding-left: 5px;
+}
+.sm-padding-left-1rem
+{
+    padding-left: 1rem;
+}
+.sm-padding-right-1rem
+{
+    padding-right: 1rem;
+}
+.sm-padding-10px
+{
+    padding: 10px;
+}
+.sm-margin-top-1rem
+{
+    margin-top: 1rem;
+}
+.sm-margin-left-1rem
+{
+    margin-left: 1rem;
+}
+.sm-margin-right-1rem
+{
+    margin-right: 1rem;
+}
+
+/*^_^*------颜色------*^_^*/
+.sm-background-color-base
+{
+    background: #000000;
+}
+.sm-background-color-red
+{
+    background: #FF0000;
+}
+.sm-text-color-white
+{
+    color: #FFFFFF;
+}
