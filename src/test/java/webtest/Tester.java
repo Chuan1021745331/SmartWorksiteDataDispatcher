@@ -1,3 +1,5 @@
+package webtest;
+
 import com.hxjd.Starter;
 import com.hxjd.web.IndexController;
 import org.junit.Before;

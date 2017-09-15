@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet">
     <link th:href="@{/css/materialize/materialize.min.css}" type="text/css" rel="stylesheet"
           href="../static/css/materialize/materialize.min.css" media="screen,projection"/>
-    <link th:href="@{/css/fullpage/jquery.fullpage.min.css}" href="../static/css/fullpage/jquery.fullpage.min.css" rel="stylesheet" />
+    <link th:href="@{/css/fullpage/jquery.fullpage.min.css}" href="../static/css/fullpage/jquery.fullpage.min.css"
+          rel="stylesheet"/>
 </head>
 <body>
 
@@ -23,10 +24,11 @@
     </div>
     <div class="nav-content">
         <ul class="tabs tabs-transparent">
-            <li id="1st" class="tab"><a class="active">实名制考勤</a></li>
-            <li id="2nd" class="tab"><a>环境监测</a></li>
+            <li id="1st" class="tab"><a class="active">环境监测</a></li>
+            <li id="2nd" class="tab"><a>实名制考勤</a></li>
             <li id="3rd" class="tab"><a>施工升降机</a></li>
             <li id="4th" class="tab"><a>视频监控</a></li>
+            <li id="5th" class="tab"><a>传输控制</a></li>
         </ul>
     </div>
 </nav>
@@ -38,17 +40,82 @@
                 <div class="sm-width-50-per sm-height-100-per sm-padding-left-1rem">
                     <ul class="collection with-header">
                         <li class="collection-header"><h4>转发数据实时监控</h4></li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
-                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13 09:39:51</li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
+                        <li class="collection-item">气温：23℃　湿度：17%　风速：微风　风向：无持续　PM10：60μg　PM2.5：60μg　噪音：45db　　　　2017-9-13
+                            09:39:51
+                        </li>
                     </ul>
+                </div>
+                <div class="sm-width-50-per sm-height-100-per sm-padding-left-1rem sm-padding-right-1rem">
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            Welcome To My WebSocket.<br/><br/>
+            <div id="ws">
+                <input id="text" type="text"/>
+                <button onclick="sendMsg()">Send</button>
+                <button onclick="closeWS()" :disabled="!opened">Close</button>
+                <button onclick="openWS()" :disabled="opened">Open</button>
+                <div v-html="msg"></div>
+            </div>
+        </div>
+        <div class="slide"><h1>施工升降机</h1></div>
+        <div class="slide"><h1>视频监控</h1></div>
+        <div class="slide">
+            <div class="sm-width-100-per sm-height-100-per sm-center">
+                <div class="sm-width-50-per sm-height-100-per sm-padding-left-1rem">
+                    <div class="collection white sm-padding-10px sm-height-20-per">
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">trending_up
+                                        </i>
+                                        <input id="icon_prefix" type="text" class="validate">
+                                        <label for="icon_prefix">数据上传频率(min)</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">phone</i>
+                                        <input id="icon_telephone" type="tel" class="validate">
+                                        <label for="icon_telephone">Telephone</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="collection white sm-padding-10px sm-height-20-per">
+
+                    </div>
+                    <div class="collection white sm-padding-10px sm-height-20-per">
+
+                    </div>
                 </div>
                 <div class="sm-width-50-per sm-height-100-per sm-padding-left-1rem sm-padding-right-1rem">
                     <div class="collection white sm-padding-10px">
@@ -77,7 +144,7 @@
                                 <td>
                                     <form action="#">
                                         <p class="range-field">
-                                            <input type="range" id="test5" min="0" max="100" />
+                                            <input type="range" id="test5" min="0" max="100"/>
                                         </p>
                                     </form>
                                 </td>
@@ -97,11 +164,12 @@
                                 <td>
                                     <form action="#">
                                         <p class="range-field">
-                                            <input type="range" id="test5" min="0" max="100" />
+                                            <input type="range" id="test5" min="0" max="100"/>
                                         </p>
                                     </form>
                                 </td>
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td>风速</td>
                                 <td>
                                     <div class="switch col s12">
@@ -116,11 +184,12 @@
                                 <td>
                                     <form action="#">
                                         <p class="range-field">
-                                            <input type="range" id="test5" min="0" max="100" />
+                                            <input type="range" id="test5" min="0" max="100"/>
                                         </p>
                                     </form>
                                 </td>
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td>风向</td>
                                 <td>
                                     <div class="switch col s12">
@@ -135,11 +204,12 @@
                                 <td>
                                     <form action="#">
                                         <p class="range-field">
-                                            <input type="range" id="test5" min="0" max="100" />
+                                            <input type="range" id="test5" min="0" max="100"/>
                                         </p>
                                     </form>
                                 </td>
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td>pm10</td>
                                 <td>
                                     <div class="switch col s12">
@@ -154,11 +224,12 @@
                                 <td>
                                     <form action="#">
                                         <p class="range-field">
-                                            <input type="range" id="test5" min="0" max="100" />
+                                            <input type="range" id="test5" min="0" max="100"/>
                                         </p>
                                     </form>
                                 </td>
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td>pm2.5</td>
                                 <td>
                                     <div class="switch col s12">
@@ -173,11 +244,12 @@
                                 <td>
                                     <form action="#">
                                         <p class="range-field">
-                                            <input type="range" id="test5" min="0" max="100" />
+                                            <input type="range" id="test5" min="0" max="100"/>
                                         </p>
                                     </form>
                                 </td>
-                            </tr><tr>
+                            </tr>
+                            <tr>
                                 <td>噪声</td>
                                 <td>
                                     <div class="switch col s12">
@@ -192,7 +264,7 @@
                                 <td>
                                     <form action="#">
                                         <p class="range-field">
-                                            <input type="range" id="test5" min="0" max="100" />
+                                            <input type="range" id="test5" min="0" max="100"/>
                                         </p>
                                     </form>
                                 </td>
@@ -203,9 +275,6 @@
                 </div>
             </div>
         </div>
-        <div class="slide"><h1>环境监测</h1></div>
-        <div class="slide"><h1>施工升降机</h1></div>
-        <div class="slide"><h1>视频监控</h1></div>
     </div>
 </div>
 
@@ -213,5 +282,80 @@
 <script th:src="@{/js/jquery-3.2.1.min.js}" src="../static/js/jquery-3.2.1.min.js"></script>
 <script th:src="@{/js/materialize/materialize.min.js}" src="../static/js/materialize/materialize.min.js"></script>
 <script th:src="@{/js/fullpage/jquery.fullpage.min.js}" src="../static/js/fullpage/jquery.fullpage.min.js"></script>
+<script th:src="@{/js/vue/vue.js}" src="../static/js/vue/vue.js"></script>
 <script th:src="@{/js/index.js}" src="../static/js/index.js"></script>
+<script type="text/javascript">
+    var websocket = null;
+
+    var wsVue = new Vue({
+        el: '#ws',
+        data: {
+            msg: "welcome to my websocket...<br/>",
+            opened: false
+        },
+        mounted: function () {
+            initWs();
+        }
+    });
+
+    function initWs() {
+        //check if your browser supports WebSocket
+        if ('WebSocket' in window) {
+            websocket = new WebSocket("ws://localhost:8080/my-websocket");
+        }
+        else {
+            alert('Sorry, websocket not supported by your browser.')
+        }
+
+        //Error callback
+        websocket.onerror = function () {
+            setMessageContent("error!");
+            wsVue.opened = false;
+        };
+
+        //socket opened callback
+        websocket.onopen = function (event) {
+            setMessageContent("websocket opened");
+            wsVue.opened = true;
+        }
+
+        //message received callback
+        websocket.onmessage = function (event) {
+            setMessageContent(event.data);
+        }
+
+        //socket closed callback
+        websocket.onclose = function () {
+            setMessageContent("websocket closed");
+            wsVue.opened = false;
+        }
+
+        //when browser window closed, close the socket, to prevent server exception
+        window.onbeforeunload = function () {
+            websocket.close();
+        }
+    }
+
+    //update message to vue and then in div
+    function setMessageContent(content) {
+        wsVue.msg += content + '<br/>';
+    }
+
+    //click to close the websocket
+    function closeWS() {
+        websocket.close();
+        wsVue.opened = false;
+    }
+
+    //click to open the websocket
+    function openWS() {
+        initWs();
+    }
+
+    //click to send message
+    function sendMsg() {
+        var message = document.getElementById('text').value;
+        websocket.send(message);
+    }
+</script>
 </html>

@@ -1,5 +1,6 @@
 package com.hxjd;
 
+import com.hxjd.listener.MyApplicationEnvironmentPreparedEvent;
 import com.hxjd.listener.MyApplicationFailedEvent;
 import com.hxjd.listener.MyApplicationReadyEvent;
 import org.mybatis.spring.annotation.MapperScan;
@@ -22,7 +23,7 @@ public class Starter
     {
         SpringApplication application = new SpringApplication(Starter.class);
 
-        application.addListeners(new MyApplicationReadyEvent(), new MyApplicationFailedEvent());
+        application.addListeners(new MyApplicationReadyEvent(), new MyApplicationFailedEvent(), new MyApplicationEnvironmentPreparedEvent());
 
         application.run(args);
     }
