@@ -1,14 +1,20 @@
 package com.hxjd.service.environment;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
-import com.hxjd.utils.AuthenticationUtil;
+import com.hxjd.model.*;
+import com.hxjd.utils.http.SmartHttp;
+import com.hxjd.web.DataRealTimeWebSocket;
 import com.hxjd.web.IndexController;
 import okhttp3.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Time: 16:26
@@ -30,11 +36,11 @@ public class EnvironmentDispatcher
 
     public static EnvironmentDispatcher getInstance()
     {
-        if (instance == null)
+        if(instance == null)
         {
-            synchronized (EnvironmentDispatcher.class)
+            synchronized(EnvironmentDispatcher.class)
             {
-                if (instance == null)
+                if(instance == null)
                 {
                     instance = new EnvironmentDispatcher();
                 }
@@ -47,30 +53,12 @@ public class EnvironmentDispatcher
     @AllowConcurrentEvents
     public void dispatch(EnvEvent event)
     {
+        EnvData data = event.getData();
+        List<EnvData> dataList = new ArrayList<>();
+        dataList.add(data);
         /*/
-        String url = "http://192.168.0.168:8080/api/v1/env/runtime";
-        OkHttpClient okHttpClient = new OkHttpClient();
-
-        RequestBody requestBody = new FormBody.Builder()
-                .add("projectCode", "5001132017081501417001")
-                .add("deviceId", "4DF9D516-7E62-4F3A-9ABE-E08B5088EF18")
-                .add("sourceId", "9b2db993-857f-11e7-857d-00163e32d704")
-                .add("deviceCode", "ASD0000X0001")
-                .add("serialNo", "ASD0000X0001")
-                .add("temperature", "39.0")
-                .add("humidity", "23.0")
-                .add("pm2p5", "35.2")
-                .add("pm10", "27.9")
-                .add("noise", "63.5")
-                .add("windSpeed", "23.0")
-                .add("windDirection", "274")
-                .add("recordTime", "20170811132025")
-                .build();
-
-        Request request = new Request.Builder().headers(AuthenticationUtil.getHeaders()).url(url).post(requestBody).build();
-        Call call = okHttpClient.newCall(request);
-
-        call.enqueue(new Callback()
+        String url = "http://192.168.0.235:8080/api/v1/env/runtime";
+        SmartHttp.post(url).json(JSON.toJSONString(dataList)).execute(new Callback()
         {
             @Override
             public void onFailure(Call call, IOException e)
@@ -82,9 +70,29 @@ public class EnvironmentDispatcher
             public void onResponse(Call call, Response response) throws IOException
             {
                 System.out.println("收到服务器反馈：" + response.body().string());
+                JSONObject result = JSON.parseObject(response.body().string());
+                int statusCode = result.getInteger("statusCode");
+
+                //如果成功发送给建委，则将发送的数据同步到数据监控界面
+                if(ResultCode.Normal.isEquals(statusCode))
+                {
+                    sendToFrontEnd(data);
+                }
             }
         });
+        /*/
+        sendToFrontEnd(data);
         //*/
         logger.debug("环境监测");
+
+    }
+
+    private void sendToFrontEnd(EnvData data)
+    {
+        DataRealTimeMessage message = new DataRealTimeMessage();
+        message.setType(DataRealTimeMessageType.ENVIRONMENT);
+        message.setValue(JSON.toJSONString(JSON.toJSONString(data)));
+
+        DataRealTimeWebSocket.sendMessage(message);
     }
 }

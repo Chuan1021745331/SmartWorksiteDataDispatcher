@@ -1,8 +1,8 @@
 html, body
 {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    /*height: 100%;*/
+    /*overflow: hidden;*/
     margin: 0;
     padding: 0;
 }
@@ -59,6 +59,30 @@ html, body
 {
     width: 50%;
 }
+.sm-width-45-per
+{
+    width: 45%;
+}
+.sm-width-40-per
+{
+    width: 40%;
+}
+.sm-width-30-per
+{
+    width: 30%;
+}
+.sm-width-25-per
+{
+    width: 25%;
+}
+.sm-width-20-per
+{
+    width: 20%;
+}
+.sm-width-10-per
+{
+    width: 10%;
+}
 .sm-height-100-per
 {
     height: 100%;
@@ -66,6 +90,14 @@ html, body
 .sm-height-20-per
 {
     height: 20%;
+}
+.sm-height-50-per
+{
+    height: 50%;
+}
+.sm-height-40-per
+{
+    height: 40%;
 }
 .sm-height-10-per
 {
@@ -132,6 +164,10 @@ html, body
 .sm-margin-top-1rem
 {
     margin-top: 1rem;
+}
+.sm-margin-bottom-20px
+{
+    margin-bottom: 20px;
 }
 .sm-margin-left-1rem
 {

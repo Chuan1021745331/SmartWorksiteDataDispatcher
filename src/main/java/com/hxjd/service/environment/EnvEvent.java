@@ -1,5 +1,7 @@
 package com.hxjd.service.environment;
 
+import com.hxjd.model.EnvData;
+
 /**
  * Time: 14:36
  * Date: 2017/9/15
@@ -10,19 +12,19 @@ package com.hxjd.service.environment;
  */
 public class EnvEvent
 {
-    private String dataStr;
+    private EnvData dataStr;
 
-    public EnvEvent(String dataStr)
+    public EnvEvent(EnvData dataStr)
     {
         this.dataStr = dataStr;
     }
 
-    public String getDataStr()
+    public EnvData getData()
     {
         return dataStr;
     }
 
-    public void setDataStr(String dataStr)
+    public void setData(EnvData dataStr)
     {
         this.dataStr = dataStr;
     }

@@ -2568,7 +2568,7 @@ if (Vel) {
     init: function (options) {
       var defaults = {
         onShow: null,
-        swipeable: false,
+        swipeable: true,
         responsiveThreshold: Infinity // breakpoint for swipeable
       };
       options = $.extend(defaults, options);

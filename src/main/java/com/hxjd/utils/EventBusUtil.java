@@ -1,8 +1,14 @@
 package com.hxjd.utils;
 
+import com.google.common.eventbus.AllowConcurrentEvents;
+import com.google.common.eventbus.DeadEvent;
 import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 import com.hxjd.service.authentication.AuthenticationDispatcher;
 import com.hxjd.service.environment.EnvironmentDispatcher;
+import com.hxjd.web.DispatcherCenter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Time: 14:27
@@ -14,12 +20,17 @@ import com.hxjd.service.environment.EnvironmentDispatcher;
  */
 public class EventBusUtil extends EventBus
 {
+    private final static Logger logger = LoggerFactory.getLogger(EventBusUtil.class);
     private static volatile EventBusUtil instance = null;
 
     private EventBusUtil()
     {
+        //触发鉴权
         this.register(AuthenticationDispatcher.getInstance());
+        //触发环境数据转发
         this.register(EnvironmentDispatcher.getInstance());
+        //未处理事件
+        this.register(new DeadEventHandler());
     }
 
     public static EventBusUtil getInstance()
@@ -35,5 +46,15 @@ public class EventBusUtil extends EventBus
             }
         }
         return instance;
+    }
+
+    private class DeadEventHandler
+    {
+        @Subscribe
+        @AllowConcurrentEvents
+        public void deadEvent(DeadEvent event)
+        {
+            logger.debug("未处理EventBus事件");
+        }
     }
 }
