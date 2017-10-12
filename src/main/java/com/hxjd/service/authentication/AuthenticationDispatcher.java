@@ -2,16 +2,9 @@ package com.hxjd.service.authentication;
 
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
-import com.hxjd.service.environment.EnvironmentDispatcher;
-import com.hxjd.utils.AuthenticationUtil;
-import com.hxjd.web.IndexController;
-import okhttp3.*;
-import okio.BufferedSink;
+import com.hxjd.receiver.IndexController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
-import java.io.IOException;
 
 /**
  * Time: 11:49

@@ -5,8 +5,9 @@ import com.google.common.eventbus.DeadEvent;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.hxjd.service.authentication.AuthenticationDispatcher;
+import com.hxjd.service.elevator.ElevatorDispatcher;
 import com.hxjd.service.environment.EnvironmentDispatcher;
-import com.hxjd.web.DispatcherCenter;
+import com.hxjd.service.pinganka.PakDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,9 +27,15 @@ public class EventBusUtil extends EventBus
     private EventBusUtil()
     {
         //触发鉴权
-        this.register(AuthenticationDispatcher.getInstance());
+        //this.register(AuthenticationDispatcher.getInstance());
+
         //触发环境数据转发
         this.register(EnvironmentDispatcher.getInstance());
+        //触发升降机数据转发
+        this.register(ElevatorDispatcher.getInstance());
+        //触发平安卡数据转发
+        this.register(PakDispatcher.getInstance());
+
         //未处理事件
         this.register(new DeadEventHandler());
     }

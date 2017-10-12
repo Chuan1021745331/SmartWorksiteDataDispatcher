@@ -10,18 +10,18 @@ package com.hxjd.model;
  */
 public class ElevatorData extends BaseData
 {
-    private String startTime;//开始工作时间
-    private String stopTime;//停止工作时间
-    private String peopleNumber;//运载人数
-    private String startHeight;//开始运行高度
-    private String stopHeight;//停止运行高度
-    private String speed;//运行速度
-    private String load;//本次运行载重
-    private String loadPercent;//本次运行最大载重百分比
-    private String direction;//运行方向，1:上升,2:下降
-    private String status;//状态, 1：预警
-    private String warningType;//预警类别: 0：预警(warning) 1：违章(illegal) 2：其他(other)
-    private String warningMsg;//预警消息
+    private String startTime = "null";//开始工作时间
+    private String stopTime = "null";//停止工作时间
+    private String peopleNumber = "null";//运载人数
+    private String startHeight = "null";//开始运行高度
+    private String stopHeight = "null";//停止运行高度
+    private String speed = "null";//运行速度
+    private String load = "null";//本次运行载重
+    private String loadPercent = "null";//本次运行最大载重百分比
+    private String direction = "null";//运行方向，1:上升,2:下降
+    private String status = "null";//状态, 0：正常 1：冲顶
+    private String warningType = "null";//预警类别: 0：预警(warning) 1：违章(illegal) 2：其他(other)
+    private String warningMsg = "null";//预警消息
 
     public String getStartTime()
     {

@@ -4717,7 +4717,7 @@ Vue$3.version = '2.4.4';
 
 /*  */
 
-// these are reserved for web because they are directly compiled away
+// these are reserved for receiver because they are directly compiled away
 // during template compilation
 var isReservedAttr = makeMap('style,class');
 
@@ -6612,7 +6612,7 @@ function updateDOMProps (oldVnode, vnode) {
   }
 }
 
-// check platforms/web/util/attrs.js acceptValue
+// check platforms/receiver/util/attrs.js acceptValue
 
 
 function shouldUpdateValue (

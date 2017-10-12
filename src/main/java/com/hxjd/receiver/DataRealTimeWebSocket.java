@@ -1,8 +1,7 @@
-package com.hxjd.web;
+package com.hxjd.receiver;
 
 import com.alibaba.fastjson.JSON;
 import com.hxjd.model.DataRealTimeMessage;
-import com.hxjd.model.DataRealTimeMessageType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

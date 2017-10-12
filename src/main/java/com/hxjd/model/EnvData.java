@@ -12,14 +12,14 @@ import com.hxjd.utils.StringUtil;
  */
 public class EnvData extends BaseData
 {
-    private String temperature = "0";
-    private String humidity = "0";
-    private String pm2p5 = "0";
-    private String pm10 = "0";
-    private String noise = "0";
-    private String windSpeed = "0";
-    private String windDirection = "0";
-    private String serialNo = "ASD0000X0001";
+    private String temperature = "null";
+    private String humidity = "null";
+    private String pm2p5 = "null";
+    private String pm10 = "null";
+    private String noise = "null";
+    private String windSpeed = "null";
+    private String windDirection = "null";
+    private String serialNo = "null";
 
     public String getTemperature()
     {

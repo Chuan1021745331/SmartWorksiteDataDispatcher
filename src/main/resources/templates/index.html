@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet" />
     <link th:href="@{/css/materialize/materialize.css}" type="text/css" rel="stylesheet"
           href="../static/css/materialize/materialize.css" media="screen,projection"/>
     <link th:href="@{/css/fullpage/jquery.fullpage.min.css}" href="../static/css/fullpage/jquery.fullpage.min.css"
@@ -14,7 +14,7 @@
 
 <nav class="nav-extended black padding-left-10">
     <div class="nav-wrapper">
-        <a href="#!" class="brand-logo" style="margin-left: 20px">智慧工地数据中转平台</a>
+        <a href="#!" class="brand-logo" style="margin-left: 20px">智慧工地数据监控中心</a>
         <ul class="right hide-on-med-and-down">
             <li><a href="#!"><i class="material-icons" onclick="window.location.reload()">refresh</i></a></li>
             <li><a href="#setting" class="modal-trigger"><i class="material-icons">settings</i></a></li>
@@ -23,19 +23,19 @@
     </div>
     <div class="nav-content">
         <ul class="tabs tabs-transparent">
-            <li id="1st" class="tab"><a class="active">环境监测</a></li>
+            <li id="1st" class="tab"><a>环境监测</a></li>
             <li id="2nd" class="tab"><a>施工升降机</a></li>
-            <li id="3rd" class="tab"><a>视频监控</a></li>
+            <li id="3rd" class="tab"><a class="active">视频监控</a></li>
             <li id="4th" class="tab"><a>实名制考勤</a></li>
         </ul>
     </div>
 </nav>
 
-<div id="fullpage">
+<div id="fullpage" style="min-width: 1024px;">
     <div class="section" id="section1">
         <!-- *^_^*------环境监测------*^_^* -->
-        <div id="env" class="slide active">
-            <div class="sm-width-100-per sm-height-100-per sm-center">
+        <div id="env" class="slide ">
+            <div class="sm-width-100-per sm-height-100-per sm-layout-center-horizontal">
                 <div class="sm-width-30-per sm-height-100-per sm-padding-left-1rem">
 
                     <ul class="collapsible white" data-collapsible="accordion">
@@ -107,9 +107,173 @@
             </div>
         </div>
         <!-- *^_^*------施工升降机------*^_^* -->
-        <div class="slide"><h1>施工升降机</h1></div>
+        <div class="slide">
+            <div class="sm-width-100-per sm-height-100-per sm-layout-top-center">
+                <div class="sm-width-100-per sm-height-35-per sm-layout-center-horizontal sm-padding-left-1rem sm-padding-right-1rem">
+                    <div class="collection white sm-width-33-per sm-height-100-per z-depth-1 tooltipped" data-position="bottom" data-delay="50" data-tooltip="1号升降机" style="float: left">
+                        <div class="sm-width-100-per sm-height-60-per sm-layout-center-horizontal">
+                            <div class="cursorPointer sm-width-33-per sm-height-100-per z-depth-4 sm-layout-top-center-reverse tooltipped" data-position="right" data-delay="50" data-tooltip="驾驶员照片" style="background: url('../static/images/fun1.png') no-repeat center;  ">
+                                <div class="sm-width-100-per sm-height-20-per black sm-layout-center-horizontal white-text opacity60 tooltipped" data-position="right" data-delay="50" data-tooltip="数据采集时间">2017-9-21 16:54:44</div>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per  sm-layout-center-vertical">
+                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="运载人数">5</div>
+                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="本次运行最大载重百分比">60%</div>
+                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical tooltipped z-depth-1" data-position="right" data-delay="50" data-tooltip="开始工作时间">2017-9-21 17:03:24</div>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-center-vertical">
+                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="本次运行载重">300kg</div>
+                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="运行方向">上升</div>
+                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="停止工作时间">2017-9-21 17:03:46</div>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
+                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="运行速度">2.3m/s</div>
+                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="开始运行高度">10m</div>
+                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="停止运行高度">13m</div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
+                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="状态">正常</div>
+                            <div class="cursorPointer sm-height-100-per sm-width-66-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="预警消息">无</div>
+                        </div>
+                    </div>
+                    <div class="collection white sm-width-33-per sm-height-100-per z-depth-1" style="float: left; margin-left: 1rem">
+
+                    </div>
+                    <div class="collection white sm-width-33-per sm-height-100-per z-depth-1" style="float: left; margin-left: 1rem">
+
+                    </div>
+                </div>
+                <div class="sm-width-100-per sm-height-35-per sm-layout-center-horizontal sm-padding-left-1rem sm-padding-right-1rem sm-margin-top-1rem">
+                    <div class="collection white sm-width-33-per sm-height-100-per z-depth-1" style="float: left">
+
+                    </div>
+                    <div class="collection white sm-width-33-per sm-height-100-per z-depth-1" style="float: left; margin-left: 1rem">
+
+                    </div>
+                    <div class="collection white sm-width-33-per sm-height-100-per z-depth-1" style="float: left; margin-left: 1rem">
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- *^_^*------视频监控------*^_^* -->
-        <div class="slide"><h1>视频监控</h1></div>
+        <div class="slide active">
+            <div class="sm-width-100-per sm-height-100-per sm-padding-left-1rem sm-padding-right-1rem">
+                <div class="sm-width-50-per sm-height-80-per white sm-layout-center-vertical">
+                    <div class="sm-width-100-per sm-height-90-per sm-scrollbar-black" style="overflow: scroll; overflow-x:hidden">
+                        <ul class="collapsible" style="margin-top: 0.01rem">
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    门禁闸机
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">place</i>
+                                    钢筋加工棚
+                                    <span class="new badge red" data-badge-caption="掉线"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    1号楼通道
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">place</i>
+                                    1号楼入口
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    1号楼施工现场
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">place</i>
+                                    2号楼入口
+                                    <span class="new badge red" data-badge-caption="掉线"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    2号楼通道
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">place</i>
+                                    2号楼施工现场
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    生活区
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">place</i>
+                                    饮水处
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    食堂
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">place</i>
+                                    渣土车通道
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    工地入口
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">place</i>
+                                    施工升降机1
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header">
+                                    <i class="material-icons">filter_drama</i>
+                                    施工升降机2
+                                    <span class="new badge" data-badge-caption="正常"></span></div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header sm-layout-center-horizontal">
+                                    <span class="grey-text">此页已完，请点击对应页码翻页</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sm-width-100-per sm-height-10-per sm-layout-left-center" style="border-top: 1px solid #C4C4C4">
+                        <ul class="pagination">
+                            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                            <li class="active"><a href="#!">1</a></li>
+                            <li class="waves-effect"><a href="#!">2</a></li>
+                            <li class="waves-effect"><a href="#!">3</a></li>
+                            <li class="waves-effect"><a href="#!">4</a></li>
+                            <li class="waves-effect"><a href="#!">5</a></li>
+                            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                            <li class="sm-layout-center-horizontal">摄像头总数：50</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- *^_^*------实名制考勤------*^_^* -->
         <div class="slide">
             <div class="row" style="margin-top: -31rem;">
@@ -121,7 +285,7 @@
                             <p>I am a very simple card. I am good at containing small bits of information.
                                 I am convenient because I require little markup to use effectively.</p>
                         </div>
-                        <div class="card-action sm-center">
+                        <div class="card-action sm-layout-center-horizontal">
                             <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
                             <div class="preloader-wrapper small active sm-margin-left-1rem">
                                 <div class="spinner-layer spinner-green-only">
@@ -254,10 +418,12 @@
 <!-- Modal Structure -->
 <div id="more" class="modal bottom-sheet">
     <div class="modal-content">
-        <h4>友情链接</h4>
-        <div class="chip">
-            <a href="http://www.ccc.gov.cn/" target="_blank">重庆市城乡建设委员会</a>
-        </div>
+        <h4>进入子系统</h4>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>劳务管理</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>视频监控</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>定位系统</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>环境检测</a>
+        <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>升降机检测</a>
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">关闭</a>

@@ -1,4 +1,4 @@
-package com.hxjd.service.environment;
+package com.hxjd.model;
 
 import com.hxjd.model.EnvData;
 
@@ -12,20 +12,20 @@ import com.hxjd.model.EnvData;
  */
 public class EnvEvent
 {
-    private EnvData dataStr;
+    private EnvData data;
 
-    public EnvEvent(EnvData dataStr)
+    public EnvEvent(EnvData data)
     {
-        this.dataStr = dataStr;
+        this.data = data;
     }
 
     public EnvData getData()
     {
-        return dataStr;
+        return data;
     }
 
-    public void setData(EnvData dataStr)
+    public void setData(EnvData data)
     {
-        this.dataStr = dataStr;
+        this.data = data;
     }
 }

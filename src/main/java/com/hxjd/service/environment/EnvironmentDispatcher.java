@@ -1,18 +1,14 @@
 package com.hxjd.service.environment;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
 import com.hxjd.model.*;
-import com.hxjd.utils.http.SmartHttp;
-import com.hxjd.web.DataRealTimeWebSocket;
-import com.hxjd.web.IndexController;
-import okhttp3.*;
+import com.hxjd.receiver.DataRealTimeWebSocket;
+import com.hxjd.receiver.IndexController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +22,7 @@ import java.util.List;
  */
 public class EnvironmentDispatcher
 {
-
-    private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
+    private final static Logger logger = LoggerFactory.getLogger(EnvironmentDispatcher.class);
     private static volatile EnvironmentDispatcher instance = null;
 
     private EnvironmentDispatcher()

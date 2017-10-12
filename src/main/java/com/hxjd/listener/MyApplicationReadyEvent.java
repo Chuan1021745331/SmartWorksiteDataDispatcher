@@ -1,5 +1,8 @@
 package com.hxjd.listener;
 
+import com.hxjd.receiver.socket.DispatcherCenterSocket;
+import com.hxjd.receiver.socket.netty.DataReceiveServer;
+import com.hxjd.utils.ApplicationContextUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -20,6 +23,10 @@ public class MyApplicationReadyEvent implements ApplicationListener<ApplicationR
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent)
     {
+        ApplicationContextUtil.applicationContext = applicationReadyEvent.getApplicationContext();
+
+        DataReceiveServer.getInstance().start();
+
         logger.info("启动成功");
     }
 }

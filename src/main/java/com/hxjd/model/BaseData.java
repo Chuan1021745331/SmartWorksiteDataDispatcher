@@ -10,11 +10,11 @@ package com.hxjd.model;
  */
 public abstract class BaseData
 {
-    private String projectCode = "5001132017081501417001";//项目唯一编码
-    private String deviceId = "4DF9D516-7E62-4F3A-9ABE-E08B5088EF18";//设备id
-    private String sourceId = "9b2db993-857f-11e7-857d-00163e32d704";//来源数据id，外部系统跟踪数据用
-    private String deviceCode = "ASD0000X0001";//设备物理编号
-    private String recordTime = "";//采集时间
+    private String projectCode = "null";//项目唯一编码
+    private String deviceId = "null";//设备id
+    private String sourceId = "null";//来源数据id，外部系统跟踪数据用
+    private String deviceCode = "null";//设备物理编号
+    private String recordTime = "null";//采集时间
 
     public String getProjectCode()
     {

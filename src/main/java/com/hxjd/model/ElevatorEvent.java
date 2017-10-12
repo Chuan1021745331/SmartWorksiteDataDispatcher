@@ -1,4 +1,4 @@
-package com.hxjd.service.elevator;
+package com.hxjd.model;
 
 import com.hxjd.model.ElevatorData;
 
@@ -10,11 +10,11 @@ import com.hxjd.model.ElevatorData;
  * ----------------------------
  * Desc: 请输入描述
  */
-public class ElevaEvent
+public class ElevatorEvent
 {
     private ElevatorData data;
 
-    public ElevaEvent(ElevatorData data)
+    public ElevatorEvent(ElevatorData data)
     {
         this.data = data;
     }

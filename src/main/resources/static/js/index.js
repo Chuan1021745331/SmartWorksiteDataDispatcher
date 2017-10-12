@@ -69,13 +69,20 @@ function initEnvCharts()
     // 指定图表的配置项和数据
     var valueOption = {
         title: {
-            text: '量化数据统计图'
+            text: '重叠统计图'
         },
         tooltip: {
-            trigger: 'axis'
+            trigger: 'none',
+            axisPointer: {
+                type: 'cross'
+            }
         },
         legend: {
-            data:['温度','湿度','风速','风向','pm10','pm2.5','噪声']
+            // width: '80%',
+            // height: '10%',
+            left: '45%',
+            // top: '7%',
+            data:['温度','湿度','风速', 'pm10','pm2.5','噪声'],
         },
         grid: {
             left: '3%',
@@ -116,12 +123,6 @@ function initEnvCharts()
                 data:[150, 232, 201, 154, 190, 330, 410]
             },
             {
-                name:'风向',
-                type:'line',
-                stack: '总量',
-                data:[320, 332, 301, 334, 390, 330, 320]
-            },
-            {
                 name:'pm10',
                 type:'line',
                 stack: '总量',
@@ -142,22 +143,29 @@ function initEnvCharts()
         ]
     };
 
-    function data(){
-        var d = [];
-        for (var i = 0; i < 24; i++) {
-            d.push({name:i+'~'+(i+1),value:Math.random()*100});
-        }
-        return d;
-    }
-
     var windDirectionOption = {
         title: {
             text: '风向玫瑰图'
         },
         tooltip: {
-            trigger: 'axis',
-            formatter: function (value) {
-                return value[0]+",指标值："+value[1]+",环比："+value[2];
+            position: ['25%', '25%'],
+            extraCssText: 'width: 50%; height: 50%; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);',
+            formatter: function (params)
+            {
+                // console.log(params)
+                return '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">N :' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;NNW:' + params.value[0] + '</div>' +
+                       '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">NW:' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;WNW:' + params.value[0] + '</div>' +
+                       '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">W :' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;WSW:' + params.value[0] + '</div>' +
+                       '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">SW:' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;SSW:' + params.value[0] + '</div>' +
+                       '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">S :' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;SSE:' + params.value[0] + '</div>' +
+                       '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">SE:' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;ESE:' + params.value[0] + '</div>' +
+                       '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">E :' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;ENE:' + params.value[0] + '</div>' +
+                       '<div style="width: 100%; height: 20px; display: flex; flex-direction: row; justify-content: space-around; align-items: center">NE:' + params.value[0] + '&emsp;&emsp;&emsp;&emsp;NNE:' + params.value[0] + '</div>'
+            }
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
             }
         },
         radar: {
@@ -171,22 +179,22 @@ function initEnvCharts()
                 }
             },
             indicator: [
-                { name: 'N（0.9/1.3）', max: 12},
-                { name: 'NNE', max: 12},
-                { name: 'NE', max: 12},
-                { name: 'ENE', max: 12},
-                { name: 'E', max: 12},
-                { name: 'ESE', max: 12},
-                { name: 'SE', max: 12},
-                { name: 'SSE', max: 12},
-                { name: 'S', max: 12},
-                { name: 'SSW', max: 12},
-                { name: 'SW', max: 12},
-                { name: 'WSW', max: 12},
-                { name: 'W', max: 12},
-                { name: 'WNW', max: 12},
+                { name: 'N', max: 12},
+                { name: 'NNW', max: 12},
                 { name: 'NW', max: 12},
-                { name: 'NNW', max: 12}
+                { name: 'WNW', max: 12},
+                { name: 'W', max: 12},
+                { name: 'WSW', max: 12},
+                { name: 'SW', max: 12},
+                { name: 'SSW', max: 12},
+                { name: 'S', max: 12},
+                { name: 'SSE', max: 12},
+                { name: 'SE', max: 12},
+                { name: 'ESE', max: 12},
+                { name: 'E', max: 12},
+                { name: 'ENE', max: 12},
+                { name: 'NE', max: 12},
+                { name: 'NNE', max: 12}
             ]
         },
         series: [{
@@ -294,6 +302,7 @@ function initComponent() {
     //materialize组件初始化
     $('.modal').modal();
     $('.collapsible').collapsible();
+    $('.tooltipped').tooltip({delay: 50});
 
     //实名制考勤组件初始化
 
