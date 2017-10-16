@@ -2,10 +2,7 @@ package com.hxjd.service.pinganka;
 
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
-import com.hxjd.model.EnvEvent;
 import com.hxjd.model.PakEvent;
-import com.hxjd.receiver.IndexController;
-import com.hxjd.service.elevator.ElevatorDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

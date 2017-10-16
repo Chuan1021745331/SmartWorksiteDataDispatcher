@@ -1,6 +1,10 @@
 package com.hxjd.utils;
 
+import com.hxjd.utils.http.SmartHttp;
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.Headers;
+import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
@@ -8,6 +12,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
@@ -67,11 +72,10 @@ public class AuthenticationUtil
     }
 
     /**
-     * 获取时间戳，建委要求与服务器对时，但是未提供相应的接口，这里暂时使用我们自己的
+     * 获取时间戳。在上传数据前需要将服务器时间与标准时间进行手动对时。
      *
      * @return 返回以秒为单位的时间戳
      */
-    @Deprecated
     private static String getTimeStamp()
     {
         long ts = System.currentTimeMillis() / 1000;
@@ -128,13 +132,13 @@ public class AuthenticationUtil
     public static Headers getHeaders()
     {
         String ts = getTimeStamp();
-        String rcode = getRandomString();
-        String signature = sha1(rcode + "_" + ts + "_" + getKeySecret());
+        String rCode = getRandomString();
+        String signature = sha1(rCode + "_" + ts + "_" + getKeySecret());
 
         Headers headers = new Headers.Builder()
                 .add("keyId", getKeyId())//授权id
                 .add("ts", ts)//时间戳
-                .add("rcode", rcode)//随机字符串
+                .add("rCode", rCode)//随机字符串
                 .add("signature", signature)//密钥签名
                 .build();
 

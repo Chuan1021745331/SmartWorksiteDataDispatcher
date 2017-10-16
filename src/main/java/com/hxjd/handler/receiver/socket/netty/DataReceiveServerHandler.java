@@ -1,4 +1,4 @@
-package com.hxjd.receiver.socket.netty;
+package com.hxjd.handler.receiver.socket.netty;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;

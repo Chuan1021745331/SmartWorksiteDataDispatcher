@@ -1,4 +1,4 @@
-package com.hxjd.receiver;
+package com.hxjd.handler.web;
 
 import com.alibaba.fastjson.JSON;
 import com.hxjd.model.DataRealTimeMessage;
@@ -22,8 +22,8 @@ import java.util.concurrent.CopyOnWriteArraySet;
  * ----------------------------
  * Desc: 请输入描述
  */
-@ServerEndpoint("/dataRealTime")
 @Component
+@ServerEndpoint("/dataRealTime")
 public class DataRealTimeWebSocket
 {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());

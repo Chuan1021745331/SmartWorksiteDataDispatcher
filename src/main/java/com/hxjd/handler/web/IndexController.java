@@ -1,4 +1,4 @@
-package com.hxjd.receiver;
+package com.hxjd.handler.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +25,8 @@ public class IndexController
         return "/index";
     }
 
-    @RequestMapping("/test")
     @ResponseBody
+    @RequestMapping("/test")
     public String test()
     {
         return "{'test':'ok'}";

@@ -10,7 +10,7 @@ package com.hxjd.model;
  */
 public abstract class BaseData
 {
-    private String projectCode = "null";//项目唯一编码
+    private String projectCode = "2B62B933-2E18-482C-8751-1DE795AE3A1F";//项目唯一编码
     private String deviceId = "null";//设备id
     private String sourceId = "null";//来源数据id，外部系统跟踪数据用
     private String deviceCode = "null";//设备物理编号

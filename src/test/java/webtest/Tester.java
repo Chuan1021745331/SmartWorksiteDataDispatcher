@@ -1,7 +1,7 @@
 package webtest;
 
 import com.hxjd.Starter;
-import com.hxjd.receiver.IndexController;
+import com.hxjd.handler.web.IndexController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

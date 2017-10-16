@@ -1,4 +1,4 @@
-package com.hxjd.receiver.http;
+package com.hxjd.handler.receiver.http;
 
 import com.hxjd.model.*;
 import com.hxjd.service.authentication.AuthEvent;

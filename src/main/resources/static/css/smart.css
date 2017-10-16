@@ -77,6 +77,24 @@ html, body
     justify-content: center;
     align-items: center;
 }
+.sm-layout-side-horizontal
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: space-between;
+    align-items: center;
+}
+.sm-layout-side-vertical
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    justify-content: space-around;
+    align-items: center;
+}
 
 /*^_^*------组件------*^_^*/
 .sm-scrollbar-black
@@ -109,6 +127,18 @@ html, body
 {
     width: 100%;
 }
+.sm-width-90-per
+{
+    width: 90%;
+}
+.sm-width-80-per
+{
+    width: 80%;
+}
+.sm-width-85-per
+{
+    width: 85%;
+}
 .sm-width-66-per
 {
     width: 66.6666667%;
@@ -130,6 +160,14 @@ html, body
 {
     width: 40%;
 }
+.sm-width-38-per
+{
+    width: 38%;
+}
+.sm-width-35-per
+{
+    width: 35%;
+}
 .sm-width-33-per
 {
     width: 33.3333333%;
@@ -145,6 +183,10 @@ html, body
 .sm-width-20-per
 {
     width: 20%;
+}
+.sm-width-15-per
+{
+    width: 15%;
 }
 .sm-width-10-per
 {
@@ -162,6 +204,22 @@ html, body
 {
     height: 90%;
 }
+.sm-height-75-per
+{
+    height: 75%;
+}
+.sm-height-70-per
+{
+    height: 70%;
+}
+.sm-height-65-per
+{
+    height: 65%;
+}
+.sm-height-63-per
+{
+    height: 63%;
+}
 .sm-height-60-per
 {
     height: 60%;
@@ -178,9 +236,17 @@ html, body
 {
     height: 35%;
 }
+.sm-height-25-per
+{
+    height: 25%;
+}
 .sm-height-20-per
 {
     height: 20%;
+}
+.sm-height-15-per
+{
+    height: 15%;
 }
 .sm-height-10-per
 {
@@ -193,10 +259,6 @@ html, body
 .sm-height-40-per
 {
     height: 40%;
-}
-.sm-height-10-per
-{
-    height: 10%;
 }
 .sm-height-8-per
 {
@@ -244,6 +306,10 @@ html, body
 {
     padding-left: 5px;
 }
+.sm-padding-left-1p5rem
+{
+    padding-left: 1.5rem;
+}
 .sm-padding-left-1rem
 {
     padding-left: 1rem;
@@ -256,9 +322,21 @@ html, body
 {
     padding-right: 1rem;
 }
+.sm-padding-right-1p5rem
+{
+    padding-right: 1.5rem;
+}
 .sm-padding-10px
 {
     padding: 10px;
+}
+.sm-padding-top-30px
+{
+    padding-top: 30px;
+}
+.sm-padding-bottom-30px
+{
+    padding-bottom: 30px;
 }
 .sm-margin-top-1rem
 {

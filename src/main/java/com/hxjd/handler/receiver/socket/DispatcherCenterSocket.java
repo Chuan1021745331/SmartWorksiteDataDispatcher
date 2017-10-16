@@ -1,16 +1,11 @@
-package com.hxjd.receiver.socket;
+package com.hxjd.handler.receiver.socket;
 
 import com.hxjd.model.EnvData;
-import com.hxjd.receiver.socket.netty.DataReceiveServerHandler;
-import com.hxjd.service.elevator.ElevatorDBService;
+import com.hxjd.handler.receiver.socket.netty.DataReceiveServerHandler;
 import com.hxjd.service.environment.EnvDBService;
 import io.netty.channel.ChannelHandlerContext;
-import org.apache.ibatis.session.Configuration;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
 
 import static com.hxjd.utils.ApplicationContextUtil.applicationContext;
 

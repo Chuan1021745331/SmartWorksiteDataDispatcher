@@ -3,8 +3,6 @@ package com.hxjd.service.elevator;
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
 import com.hxjd.model.ElevatorEvent;
-import com.hxjd.model.EnvEvent;
-import com.hxjd.receiver.IndexController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

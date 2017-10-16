@@ -4,8 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
 import com.hxjd.model.*;
-import com.hxjd.receiver.DataRealTimeWebSocket;
-import com.hxjd.receiver.IndexController;
+import com.hxjd.handler.web.DataRealTimeWebSocket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

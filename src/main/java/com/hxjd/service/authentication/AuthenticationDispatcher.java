@@ -2,7 +2,7 @@ package com.hxjd.service.authentication;
 
 import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.Subscribe;
-import com.hxjd.receiver.IndexController;
+import com.hxjd.handler.web.IndexController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

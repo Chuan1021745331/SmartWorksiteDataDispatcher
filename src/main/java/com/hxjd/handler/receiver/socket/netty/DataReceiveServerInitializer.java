@@ -1,6 +1,6 @@
-package com.hxjd.receiver.socket.netty;
+package com.hxjd.handler.receiver.socket.netty;
 
-import com.hxjd.receiver.socket.DispatcherCenterSocket;
+import com.hxjd.handler.receiver.socket.DispatcherCenterSocket;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
