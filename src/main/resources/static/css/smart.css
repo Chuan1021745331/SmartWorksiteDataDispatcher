@@ -2,15 +2,20 @@ html, body
 {
     /*width: 100%;*/
     /*height: 100%;*/
-    /*overflow: hidden;*/
+    overflow: scroll;
     margin: 0;
     padding: 0;
     min-width: 1366px;
+    min-height: 1000px;
 }
 
 .debug
 {
     border: 1px solid red;
+}
+.app-background-grey
+{
+    background: #DDDEE3;
 }
 
 /*^_^*------容器布局------*^_^*/
@@ -144,6 +149,10 @@ html, body
     width: 66.6666667%;
 }
 
+.sm-width-70-per
+{
+    width: 70%;
+}
 .sm-width-60-per
 {
     width: 60%;
@@ -192,9 +201,21 @@ html, body
 {
     width: 10%;
 }
+.sm-height-110-per
+{
+    height: 110%;
+}
 .sm-height-100-per
 {
     height: 100%;
+}
+.sm-height-96-per
+{
+    height: 96%;
+}
+.sm-height-95-per
+{
+    height: 95%;
 }
 .sm-height-80-per
 {
@@ -203,6 +224,14 @@ html, body
 .sm-height-90-per
 {
     height: 90%;
+}
+.sm-height-98-per
+{
+    height: 98%;
+}
+.sm-height-95-per
+{
+    height: 95%;
 }
 .sm-height-75-per
 {
@@ -236,13 +265,61 @@ html, body
 {
     height: 35%;
 }
+.sm-height-29-per
+{
+    height: 29%;
+}
+.sm-height-28-per
+{
+    height: 28%;
+}
+.sm-height-27-per
+{
+    height: 27%;
+}
+.sm-height-26-per
+{
+    height: 26%;
+}
 .sm-height-25-per
 {
     height: 25%;
 }
+.sm-height-24-per
+{
+    height: 24%;
+}
+.sm-height-23-per
+{
+    height: 23%;
+}
+.sm-height-22-per
+{
+    height: 22%;
+}
+.sm-height-21-per
+{
+    height: 21%;
+}
 .sm-height-20-per
 {
     height: 20%;
+}
+.sm-height-19-per
+{
+    height: 19%;
+}
+.sm-height-18-per
+{
+    height: 18%;
+}
+.sm-height-17-per
+{
+    height: 17%;
+}
+.sm-height-16-per
+{
+    height: 16%;
 }
 .sm-height-15-per
 {
@@ -318,9 +395,25 @@ html, body
 {
     padding: 1rem;
 }
+.sm-padding-top-1rem
+{
+    padding-top: 1rem;
+}
+.sm-padding-top-p5rem
+{
+    padding-top: .5rem;
+}
+.sm-margin-1rem
+{
+    margin: 10px;
+}
 .sm-padding-right-1rem
 {
     padding-right: 1rem;
+}
+.sm-padding-bottom-1rem
+{
+    padding-bottom: 1rem;
 }
 .sm-padding-right-1p5rem
 {
@@ -341,6 +434,10 @@ html, body
 .sm-margin-top-1rem
 {
     margin-top: 1rem;
+}
+.sm-margin-bottom-1rem
+{
+    margin-bottom: 1rem;
 }
 .sm-margin-bottom-20px
 {

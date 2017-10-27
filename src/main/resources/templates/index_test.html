@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html class="sm-scrollbar-black" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet" />
+    <link th:href="@{/css/videojs/video-js.min.css}" href="../static/css/videojs/video-js.min.css" rel="stylesheet" />
+    <link th:href="@{/css/materialize/materialize.css}" type="text/css" rel="stylesheet"
+          href="../static/css/materialize/materialize.css" media="screen,projection"/>
+</head>
+<body class="sm-scrollbar-black">
+
+            <div class="sm-width-100-per sm-height-70-per black">
+                <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+                    <source src="rtmp://live.hkstv.hk.lxdns.com/live/hks" type="rtmp/flv">
+                    <!--<source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">-->
+                    <!--<source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">-->
+                    <track kind="captions" src="../static/shared/example-captions.vtt" srclang="en" label="English"></track>
+                    <!-- Tracks need an ending tag thanks to IE9 -->
+                    <track kind="subtitles" src="../static/shared/example-captions.vtt" srclang="en" label="English"></track>
+                    <!-- Tracks need an ending tag thanks to IE9 -->
+                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                </video>
+            </div>
+</body>
+<script th:src="@{/js/jquery-3.2.1.min.js}" src="../static/js/jquery-3.2.1.min.js"></script>
+<script th:src="@{/js/videojs/videojs-ie8.min.js}" src="../static/js/videojs/videojs-ie8.min.js"></script>
+<script th:src="@{/js/videojs/video.min.js}" src="../static/js/videojs/video.min.js"></script>
+<!--<script th:src="@{/js/videojs/video-js.swf}" src="../static/js/videojs/video-js.swf"></script>-->
+<script type="text/javascript">
+    videojs.options.flash.swf = "js/videojs/video-js.swf"
+</script>
+<script>
+    var player = videojs('example_video_1');
+    player.play();
+</script>
+</html>

@@ -30,8 +30,9 @@ public class EnvDBService
     {
         try
         {
-            data.setRecordTime(LocalDateTime.now().format(SDTimeUtil.dateTimeFormatter));
-            return dao.add(data);
+            dao.add(data);
+            logger.info("升降机数据保存成功");
+            return true;
         }
         catch(Exception e)
         {

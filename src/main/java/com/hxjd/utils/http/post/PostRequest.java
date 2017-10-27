@@ -3,6 +3,7 @@ package com.hxjd.utils.http.post;
 import com.hxjd.utils.StringUtil;
 import okhttp3.*;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -105,16 +106,40 @@ public class PostRequest
         }
     }
 
+    public String execute()
+    {
+        if(!StringUtil.isEmpty(jsonData))
+        {
+            return jsonRequest();
+        }
+        else if(!paramsMap.isEmpty())
+        {
+            return formRequest();
+        }
+        else
+        {
+            return emptyRequest();
+        }
+    }
+
     /*^_^------辅助函数------^_^*/
-    private void jsonRequest(Callback callback)
+    private String jsonRequest(Callback... callback)
     {
         //处理参数，这里是json参数
         RequestBody requestBody = RequestBody.create(MEDIA_TYPE_JSON, jsonData);
 
-        buildRequest(requestBody, callback);
+        if(callback.length == 0)
+        {
+            return buildRequestSync(requestBody);
+        }
+        else
+        {
+            buildRequestAsync(requestBody, callback[0]);
+            return "";
+        }
     }
 
-    private void formRequest(Callback callback)
+    private String formRequest(Callback... callback)
     {
         //处理参数，这里是普通form参数
         FormBody.Builder builder = new FormBody.Builder();
@@ -127,16 +152,24 @@ public class PostRequest
             builder.add(me.getKey(), me.getValue());
         }
 
-        buildRequest(builder.build(), callback);
+        if(callback.length == 0)
+        {
+            return buildRequestSync(builder.build());
+        }
+        else
+        {
+            buildRequestAsync(builder.build(), callback[0]);
+            return "";
+        }
 
     }
 
-    private void emptyRequest(Callback callback)
+    private String emptyRequest(Callback... callback)
     {
-        formRequest(callback);
+        return formRequest(callback);
     }
 
-    private void buildRequest(RequestBody requestBody, Callback callback)
+    private void buildRequestAsync(RequestBody requestBody, Callback callback)
     {
         OkHttpClient okHttpClient = new OkHttpClient();
 
@@ -155,6 +188,35 @@ public class PostRequest
 
         //异步执行
         call.enqueue(callback);
+    }
+
+    private String buildRequestSync(RequestBody requestBody)
+    {
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        //处理headers
+        combineHeaders();
+        Headers.Builder builder = new Headers.Builder();
+        for(Map.Entry<String, String> me : headersMap.entrySet())
+        {
+            builder.add(me.getKey(), me.getValue());
+        }
+        Headers headers = builder.build();
+
+        //构造请求
+        Request request = new Request.Builder().headers(headers).url(url).post(requestBody).build();
+        Call call = okHttpClient.newCall(request);
+
+        //异步执行
+        try
+        {
+            return call.execute().body().string();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     /**

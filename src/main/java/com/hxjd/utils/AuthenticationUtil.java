@@ -78,8 +78,7 @@ public class AuthenticationUtil
      */
     private static String getTimeStamp()
     {
-        long ts = System.currentTimeMillis() / 1000;
-        return String.valueOf(ts);
+        return SDTimeUtil.getRemoteTimeStamp();
     }
 
     /**

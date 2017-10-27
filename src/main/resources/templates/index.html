@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html class="sm-scrollbar-black" xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link th:href="@{/css/smart.css}" href="../static/css/smart.css" rel="stylesheet" />
+    <link th:href="@{/css/videojs/video-js.min.css}" href="../static/css/videojs/video-js.min.css" rel="stylesheet" />
     <link th:href="@{/css/materialize/materialize.css}" type="text/css" rel="stylesheet"
           href="../static/css/materialize/materialize.css" media="screen,projection"/>
-    <link th:href="@{/css/fullpage/jquery.fullpage.min.css}" href="../static/css/fullpage/jquery.fullpage.min.css"
-          rel="stylesheet"/>
 </head>
-<body>
+<body class="sm-scrollbar-black">
 
 <nav class="nav-extended black padding-left-10">
     <div class="nav-wrapper">
@@ -22,430 +21,501 @@
         </ul>
     </div>
     <div class="nav-content">
-        <ul class="tabs tabs-transparent">
-            <li id="1st" class="tab"><a>环境监测</a></li>
-            <li id="2nd" class="tab"><a>施工升降机</a></li>
-            <li id="3rd" class="tab"><a class="active">视频监控</a></li>
-            <li id="4th" class="tab"><a>实名制考勤</a></li>
+        <ul id="tabLabels" class="tabs tabs-transparent">
+            <li id="1st" class="tab"><a href="#env">环境监测</a></li>
+            <li id="2nd" class="tab"><a href="#ele">施工升降机</a></li>
+            <li id="3rd" class="tab"><a href="#mon">视频监控</a></li>
+            <li id="4th" class="tab tabs-fixed-width disabled tooltipped" data-position="bottom" data-delay="50" data-tooltip="暂未开放"><a href="#pak" onclick=showToast("暂未开放")>实名制考勤</a></li>
         </ul>
     </div>
 </nav>
 
-<div id="fullpage" style="min-width: 1024px;">
-    <div class="section" id="section1">
-        <!-- *^_^*------环境监测------*^_^* -->
-        <div id="env" class="slide ">
-            <div class="sm-width-100-per sm-height-100-per sm-layout-center-horizontal">
-                <div class="sm-width-30-per sm-height-100-per sm-padding-left-1rem">
+<div id="env" class="app-background-grey">
+    <div id="envVue" class="sm-width-100-per sm-height-100-per sm-padding-1rem sm-layout-center-horizontal">
+        <div class="z-depth-2 sm-width-30-per sm-height-100-per sm-margin-right-1rem sm-layout-center-vertical sm-scrollbar-black" style="overflow: scroll">
+            <div style="margin-bottom: 45px" class="sm-width-100-per sm-height-50-per sm-margin-bottom-1rem">
+                <ul class="collapsible white" data-collapsible="accordion" style="margin-top: 5px">
+                    <li class="collection-header sm-padding-left-1rem sm-padding-top-p5rem" style="border-bottom: 1px solid #ddd">
+                        <h4>环境监测数据</h4>
+                    </li>
 
-                    <ul class="collapsible white" data-collapsible="accordion">
-                        <li class="collection-header sm-padding-left-1rem" style="border-bottom: 1px solid #ddd">
-                            <h4>环境监测数据</h4>
-                        </li>
+                    <li class=" sm-margin-left-1rem ">
+                        <div class="collapsible-header">
+                            <i class="material-icons">wb_sunny</i>
+                            温度
+                            <span class="badge" v-bind:class="{ 'red-text':showStatus }">{{ temperature }}</span>
+                        </div>
+                    </li>
+                    <li class=" sm-margin-left-1rem ">
+                        <div class="collapsible-header">
+                            <i class="material-icons">beach_access</i>
+                            湿度
+                            <span class="badge" v-bind:class="{ 'red-text':showStatus }">{{ humidity }}</span>
+                        </div>
+                    </li>
+                    <li class=" sm-margin-left-1rem ">
+                        <div class="collapsible-header">
+                            <i class="material-icons">toys</i>
+                            风速
+                            <span class="badge" v-bind:class="{ 'red-text':showStatus }">{{ windSpeed }}</span>
+                        </div>
+                    </li>
+                    <li class=" sm-margin-left-1rem ">
+                        <div class="collapsible-header">
+                            <i class="material-icons">golf_course</i>
+                            风向
+                            <span class="badge" v-bind:class="{ 'red-text':showStatus }">{{ windDirection }}</span>
+                        </div>
+                    </li>
+                    <li class=" sm-margin-left-1rem ">
+                        <div class="collapsible-header">
+                            <i class="material-icons">smoke_free</i>
+                            pm10
+                            <span class="badge" v-bind:class="{ 'red-text':showStatus }">{{ pm10 }}</span>
+                        </div>
+                    </li>
+                    <li class=" sm-margin-left-1rem ">
+                        <div class="collapsible-header">
+                            <i class="material-icons">smoking_rooms</i>
+                            pm2.5
+                            <span class="badge" v-bind:class="{ 'red-text':showStatus }">{{ pm2p5 }}</span>
+                        </div>
+                    </li>
+                    <li class=" sm-margin-left-1rem ">
+                        <div class="collapsible-header">
+                            <i class="material-icons">headset</i>
+                            噪声
+                            <span class="badge" v-bind:class="{ 'red-text':showStatus }">{{ noise }}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-                        <li class=" sm-margin-left-1rem ">
-                            <div class="collapsible-header">
-                                <i class="material-icons">wb_sunny</i>
-                                气温
-                                <span class="badge">{{ temperature }}</span>
-                            </div>
-                        </li>
-                        <li class=" sm-margin-left-1rem ">
-                            <div class="collapsible-header">
-                                <i class="material-icons">beach_access</i>
-                                湿度
-                                <span class="badge">{{ humidity }}</span>
-                            </div>
-                        </li>
-                        <li class=" sm-margin-left-1rem ">
-                            <div class="collapsible-header">
-                                <i class="material-icons">toys</i>
-                                风速
-                                <span class="badge">{{ windSpeed }}</span>
-                            </div>
-                        </li>
-                        <li class=" sm-margin-left-1rem ">
-                            <div class="collapsible-header">
-                                <i class="material-icons">golf_course</i>
-                                风向
-                                <span class="badge">{{ windDirection }}</span>
-                            </div>
-                        </li>
-                        <li class=" sm-margin-left-1rem ">
-                            <div class="collapsible-header">
-                                <i class="material-icons">smoke_free</i>
-                                pm10
-                                <span class="badge">{{ pm10 }}</span>
-                            </div>
-                        </li>
-                        <li class=" sm-margin-left-1rem ">
-                            <div class="collapsible-header">
-                                <i class="material-icons">smoking_rooms</i>
-                                pm2.5
-                                <span class="badge">{{ pm2p5 }}</span>
-                            </div>
-                        </li>
-                        <li class=" sm-margin-left-1rem ">
-                            <div class="collapsible-header">
-                                <i class="material-icons">headset</i>
-                                噪声
-                                <span class="badge">{{ noise }}</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="sm-width-45-per sm-height-100-per sm-padding-left-1rem sm-padding-right-1rem">
-                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-                    <div id="envValueCharts" style="width: 100%;height:45%;"></div>
-                    <!--<div id="envWindDirectionCharts" style="width: 40%;height:40%;"></div>-->
-                </div>
-                <div class="sm-width-25-per sm-height-100-per sm-padding-left-1rem sm-padding-right-1rem">
-                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-                    <!--<div id="envValueCharts" style="width: 100%;height:45%;"></div>-->
-                    <div id="envWindDirectionCharts" style="width: 100%;height:45%;"></div>
-                </div>
+            <div class=" z-depth-2 white sm-width-100-per sm-height-50-per sm-padding-1rem">
+                <div id="windDirectionChart" style="width: 100%;height:100%;"></div>
             </div>
         </div>
-        <!-- *^_^*------施工升降机------*^_^* -->
-        <div class="slide">
-            <div class="sm-width-100-per sm-height-100-per sm-layout-top-center">
-                <div class="sm-width-100-per sm-height-40-per sm-layout-center-horizontal sm-padding-left-1rem sm-padding-right-1rem">
-                    <div class="collection white sm-width-33-per sm-height-100-per z-depth-1 tooltipped" data-position="bottom" data-delay="50" data-tooltip="1号升降机" style="float: left">
-                        <div class="sm-width-100-per sm-height-60-per sm-layout-center-horizontal">
-                            <div class="cursorPointer sm-width-33-per sm-height-100-per z-depth-4 sm-layout-top-center-reverse tooltipped" data-position="right" data-delay="50" data-tooltip="驾驶员照片" style="background: url('../static/images/fun1.png') no-repeat center;  ">
-                                <div class="sm-width-100-per sm-height-20-per black sm-layout-center-horizontal white-text opacity60 tooltipped" data-position="right" data-delay="50" data-tooltip="数据采集时间">2017-9-21 16:54:44</div>
-                            </div>
-                            <div class="sm-width-33-per sm-height-100-per  sm-layout-center-vertical">
-                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="运载人数">5</div>
-                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="本次运行最大载重百分比">60%</div>
-                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical tooltipped z-depth-1" data-position="right" data-delay="50" data-tooltip="开始工作时间">2017-9-21 17:03:24</div>
-                            </div>
-                            <div class="sm-width-33-per sm-height-100-per sm-layout-center-vertical">
-                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="本次运行载重">300kg</div>
-                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="运行方向">上升</div>
-                                <div class="cursorPointer sm-width-100-per sm-height-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="停止工作时间">2017-9-21 17:03:46</div>
-                            </div>
-                        </div>
+        <div class="z-depth-2 white sm-width-70-per sm-height-100-per sm-padding-left-1rem sm-padding-top-1rem sm-scrollbar-black" style="overflow: scroll;">
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div id="temperatureChart" style="width: 100%;height:450px;"></div>
+            <div id="humidityChart" style="width: 100%;height:450px;"></div>
+            <div id="windSpeedChart" style="width: 100%;height:450px;"></div>
+            <div id="pm10Chart" style="width: 100%;height:450px;"></div>
+            <div id="pm2p5Chart" style="width: 100%;height:450px;"></div>
+            <div id="noiseChart" style="width: 100%;height:450px;"></div>
+            <div class="white sm-width-100-per sm-height-60-per"></div>
+            <!--<div id="envWindDirectionCharts" style="width: 40%;height:40%;"></div>-->
+        </div>
+    </div>
+    <div style="width: 100%; height: 100px; background: green"></div>
+</div>
+<div id="ele" class="app-background-grey">
+    <div id="eleVue" class="sm-width-100-per sm-height-100-per sm-padding-1rem sm-layout-top-center">
+        <div class="sm-width-100-per sm-height-40-per sm-layout-left-center" style="height: 400px;">
+            <div class="white z-depth-1 sm-padding-right-1p5rem sm-layout-center-horizontal" style="width: 740px; height: 400px;">
+                <div class="sm-width-20-per sm-height-100-per" th:style="'background-size: cover; background: url('+@{/images/elev/elev.png}+') no-repeat center center;'" style="background-size: cover; background: url('../static/images/elev/elev.png') no-repeat center center;">
+
+                </div>
+                <div class="sm-width-80-per sm-height-100-per sm-layout-center-vertical">
+                    <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
+                        <div class="black sm-width-40-per" style="height: 3px;"></div>
+                        <div class="sm-width-20-per sm-height-100-per"  th:style="'background-size: cover; background: url('+@{/images/elev/avatar.png}+') no-repeat center center;'" style="background-size: cover; background: url('../static/images/elev/avatar.png') no-repeat center center;"></div>
+                        <div class="black sm-width-40-per" style="height: 3px;"></div>
+                    </div>
+                    <div class="sm-width-100-per sm-height-63-per sm-layout-center-vertical">
                         <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
-                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="运行速度">2.3m/s</div>
-                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="开始运行高度">10m</div>
-                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="停止运行高度">13m</div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/people_number.png}" src="../static/images/elev/people_number.png">
+                                <span>&nbsp;运载人数&nbsp;:&nbsp;</span>
+                                <span>5</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/up.png}" src="../static/images/elev/up.png">
+                                <span>&nbsp;运行方向&nbsp;:&nbsp;</span>
+                                <span>5</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/weight.png}" src="../static/images/elev/weight.png">
+                                <span>&nbsp;运行载重&nbsp;:&nbsp;</span>
+                                <span>5</span>
+                            </div>
                         </div>
-                        <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
-                            <div class="cursorPointer sm-height-100-per sm-width-33-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="状态">正常</div>
-                            <div class="cursorPointer sm-height-100-per sm-width-66-per sm-layout-center-vertical z-depth-1 tooltipped" data-position="right" data-delay="50" data-tooltip="预警消息">无</div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-45-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/load_percent.png}" src="../static/images/elev/load_percent.png">
+                                <span>&nbsp;最大载重百分比&nbsp;:&nbsp;</span>
+                                <span>50</span>
+                                <span>%</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/speed.png}" src="../static/images/elev/speed.png">
+                                <span>&nbsp;运行速度&nbsp;:&nbsp;</span>
+                                <span>2.3</span>
+                                <span>m/s</span>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/status.png}" src="../static/images/elev/status.png">
+                                <span>&nbsp;运行状态&nbsp;:&nbsp;</span>
+                                <span>正常</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/warning_msg.png}" src="../static/images/elev/warning_msg.png">
+                                <span>&nbsp;预警信息&nbsp;:&nbsp;</span>
+                                <span>无</span>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/start_height.png}" src="../static/images/elev/start_height.png">
+                                <span>&nbsp;开始高度&nbsp;:&nbsp;</span>
+                                <span>10</span>
+                                <span>m</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/stop_height.png}" src="../static/images/elev/stop_height.png">
+                                <span>&nbsp;停止高度&nbsp;:&nbsp;</span>
+                                <span>13</span>
+                                <span>m</span>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/start_time.png}" src="../static/images/elev/start_time.png">
+                                <span>&nbsp;开始时间&nbsp;:&nbsp;</span>
+                                <span>17:22:16</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/stop_time.png}" src="../static/images/elev/stop_time.png">
+                                <span>&nbsp;停止时间&nbsp;:&nbsp;</span>
+                                <span>17:22:58</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="collection white sm-width-38-per sm-height-100-per z-depth-1 sm-layout-center-horizontal sm-padding-right-1p5rem" style="float: left; margin-left: 1rem">
-                        <div class="sm-width-20-per sm-height-100-per" style="background-size: cover; background: url('../static/images/elev/elev.png') no-repeat center center;">
+                </div>
+            </div>
+            <div class="white z-depth-1 sm-layout-center-horizontal sm-margin-left-1rem" style="width: 740px; height: 400px;">
+                <div class="sm-width-20-per sm-height-100-per" th:style="'background-size: cover; background: url('+@{/images/elev/elev.png}+') no-repeat center center;'" style="background-size: cover; background: url('../static/images/elev/elev.png') no-repeat center center;">
 
-                        </div>
-                        <div class="sm-width-80-per sm-height-100-per sm-layout-center-vertical">
-                            <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
-                                <div class="black sm-width-40-per" style="height: 3px;"></div>
-                                <div class="sm-width-20-per sm-height-100-per" style="background-size: cover; background: url('../static/images/elev/avatar.png') no-repeat center center;"></div>
-                                <div class="black sm-width-40-per" style="height: 3px;"></div>
+                </div>
+                <div class="sm-width-80-per sm-height-100-per sm-layout-center-vertical">
+                    <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
+                        <div class="black sm-width-40-per" style="height: 3px;"></div>
+                        <div class="sm-width-20-per sm-height-100-per"  th:style="'background-size: cover; background: url('+@{/images/elev/avatar.png}+') no-repeat center center;'" style="background-size: cover; background: url('../static/images/elev/avatar.png') no-repeat center center;"></div>
+                        <div class="black sm-width-40-per" style="height: 3px;"></div>
+                    </div>
+                    <div class="sm-width-100-per sm-height-63-per sm-layout-center-vertical">
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/people_number.png}" src="../static/images/elev/people_number.png">
+                                <span>&nbsp;运载人数&nbsp;:&nbsp;</span>
+                                <span>5</span>
                             </div>
-                            <div class="sm-width-100-per sm-height-63-per sm-layout-center-vertical">
-                                <div class="sm-width-100-per sm-height-20-per sm-layout-center-horizontal">
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/people_number.png">
-                                        <span>&nbsp;运载人数&nbsp;:&nbsp;</span>
-                                        <span>5</span>
-                                    </div>
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/up.png">
-                                        <span>&nbsp;运行方向&nbsp;:&nbsp;</span>
-                                        <span>5</span>
-                                    </div>
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/weight.png">
-                                        <span>&nbsp;运行载重&nbsp;:&nbsp;</span>
-                                        <span>5</span>
-                                    </div>
-                                </div>
-                                <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
-                                    <div class="sm-width-45-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/load_percent.png">
-                                        <span>&nbsp;最大载重百分比&nbsp;:&nbsp;</span>
-                                        <span>50</span>
-                                        <span>%</span>
-                                    </div>
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/speed.png">
-                                        <span>&nbsp;运行速度&nbsp;:&nbsp;</span>
-                                        <span>2.3</span>
-                                        <span>m/s</span>
-                                    </div>
-                                </div>
-                                <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/status.png">
-                                        <span>&nbsp;运行状态&nbsp;:&nbsp;</span>
-                                        <span>正常</span>
-                                    </div>
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/warning_msg.png">
-                                        <span>&nbsp;预警信息&nbsp;:&nbsp;</span>
-                                        <span>无</span>
-                                    </div>
-                                </div>
-                                <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/start_height.png">
-                                        <span>&nbsp;开始高度&nbsp;:&nbsp;</span>
-                                        <span>10</span>
-                                        <span>m</span>
-                                    </div>
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/stop_height.png">
-                                        <span>&nbsp;停止高度&nbsp;:&nbsp;</span>
-                                        <span>13</span>
-                                        <span>m</span>
-                                    </div>
-                                </div>
-                                <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/start_time.png">
-                                        <span>&nbsp;开始时间&nbsp;:&nbsp;</span>
-                                        <span>17:22:16</span>
-                                    </div>
-                                    <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
-                                        <img src="../static/images/elev/stop_time.png">
-                                        <span>&nbsp;停止时间&nbsp;:&nbsp;</span>
-                                        <span>17:22:58</span>
-                                    </div>
-                                </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/up.png}" src="../static/images/elev/up.png">
+                                <span>&nbsp;运行方向&nbsp;:&nbsp;</span>
+                                <span>5</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/weight.png}" src="../static/images/elev/weight.png">
+                                <span>&nbsp;运行载重&nbsp;:&nbsp;</span>
+                                <span>5</span>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-45-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/load_percent.png}" src="../static/images/elev/load_percent.png">
+                                <span>&nbsp;最大载重百分比&nbsp;:&nbsp;</span>
+                                <span>50</span>
+                                <span>%</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/speed.png}" src="../static/images/elev/speed.png">
+                                <span>&nbsp;运行速度&nbsp;:&nbsp;</span>
+                                <span>2.3</span>
+                                <span>m/s</span>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/status.png}" src="../static/images/elev/status.png">
+                                <span>&nbsp;运行状态&nbsp;:&nbsp;</span>
+                                <span>正常</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/warning_msg.png}" src="../static/images/elev/warning_msg.png">
+                                <span>&nbsp;预警信息&nbsp;:&nbsp;</span>
+                                <span>无</span>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/start_height.png}" src="../static/images/elev/start_height.png">
+                                <span>&nbsp;开始高度&nbsp;:&nbsp;</span>
+                                <span>10</span>
+                                <span>m</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/stop_height.png}" src="../static/images/elev/stop_height.png">
+                                <span>&nbsp;停止高度&nbsp;:&nbsp;</span>
+                                <span>13</span>
+                                <span>m</span>
+                            </div>
+                        </div>
+                        <div class="sm-width-100-per sm-height-20-per sm-layout-side-horizontal">
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/start_time.png}" src="../static/images/elev/start_time.png">
+                                <span>&nbsp;开始时间&nbsp;:&nbsp;</span>
+                                <span>17:22:16</span>
+                            </div>
+                            <div class="sm-width-33-per sm-height-100-per sm-layout-left-center sm-padding-left-1p5rem">
+                                <img th:src="@{/images/elev/stop_time.png}" src="../static/images/elev/stop_time.png">
+                                <span>&nbsp;停止时间&nbsp;:&nbsp;</span>
+                                <span>17:22:58</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- *^_^*------视频监控------*^_^* -->
-        <div class="slide active">
-            <div class="sm-width-100-per sm-height-100-per sm-padding-left-1rem sm-padding-right-1rem">
-                <div class="sm-width-50-per sm-height-80-per white sm-layout-center-vertical">
-                    <div class="sm-width-100-per sm-height-90-per sm-scrollbar-black" style="overflow: scroll; overflow-x:hidden">
-                        <ul class="collapsible" style="margin-top: 0.01rem">
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    门禁闸机
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">place</i>
-                                    钢筋加工棚
-                                    <span class="new badge red" data-badge-caption="掉线"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    1号楼通道
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">place</i>
-                                    1号楼入口
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    1号楼施工现场
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">place</i>
-                                    2号楼入口
-                                    <span class="new badge red" data-badge-caption="掉线"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    2号楼通道
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">place</i>
-                                    2号楼施工现场
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    生活区
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">place</i>
-                                    饮水处
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    食堂
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">place</i>
-                                    渣土车通道
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    工地入口
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">place</i>
-                                    施工升降机1
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header">
-                                    <i class="material-icons">filter_drama</i>
-                                    施工升降机2
-                                    <span class="new badge" data-badge-caption="正常"></span></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header sm-layout-center-horizontal">
-                                    <span class="grey-text">此页已完，请点击对应页码翻页</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="sm-width-100-per sm-height-10-per sm-layout-left-center" style="border-top: 1px solid #C4C4C4">
-                        <ul class="pagination">
-                            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                            <li class="active"><a href="#!">1</a></li>
-                            <li class="waves-effect"><a href="#!">2</a></li>
-                            <li class="waves-effect"><a href="#!">3</a></li>
-                            <li class="waves-effect"><a href="#!">4</a></li>
-                            <li class="waves-effect"><a href="#!">5</a></li>
-                            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                            <li class="sm-layout-center-horizontal">摄像头总数：50</li>
-                        </ul>
-                    </div>
-                </div>
+    </div>
+</div>
+<div id="mon" class="app-background-grey">
+    <div id="monVue" class="sm-width-100-per sm-height-100-per sm-padding-1rem sm-layout-center-horizontal">
+        <div class="sm-width-50-per sm-height-100-per white sm-layout-center-vertical">
+            <div class="sm-width-100-per sm-height-90-per sm-scrollbar-black" style="overflow: scroll; overflow-x:hidden">
+                <ul class="collapsible" style="margin-top: 0.01rem">
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            门禁闸机
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            钢筋加工棚
+                            <span class="new badge red" data-badge-caption="掉线"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            1号楼通道
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            1号楼入口
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            1号楼施工现场
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            2号楼入口
+                            <span class="new badge red" data-badge-caption="掉线"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            2号楼通道
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            2号楼施工现场
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            生活区
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            饮水处
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            食堂
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            渣土车通道
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            工地入口
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">place</i>
+                            施工升降机1
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <i class="material-icons">filter_drama</i>
+                            施工升降机2
+                            <span class="new badge" data-badge-caption="正常"></span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header sm-layout-center-horizontal">
+                            <span class="grey-text">此页已完，请点击对应页码翻页</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="sm-width-100-per sm-height-10-per sm-layout-left-center" style="border-top: 1px solid #C4C4C4">
+                <ul class="pagination">
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                    <li class="active"><a href="#!">1</a></li>
+                    <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li>
+                    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                    <li class="sm-layout-center-horizontal">摄像头总数：50</li>
+                </ul>
             </div>
         </div>
-        <!-- *^_^*------实名制考勤------*^_^* -->
-        <div class="slide">
-            <div class="row" style="margin-top: -31rem;">
-                <!-- 上传考勤数据 -->
-                <div class="col s12 m3">
-                    <div class="card white">
-                        <div class="card-content black-text">
-                            <span class="card-title">上传考勤数据</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action sm-layout-center-horizontal">
-                            <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
-                            <div class="preloader-wrapper small active sm-margin-left-1rem">
-                                <div class="spinner-layer spinner-green-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
+        <div class="sm-width-50-per sm-height-100-per sm-margin-left-1rem sm-layout-center-vertical">
+            <div class="sm-width-100-per sm-height-70-per black">
+                <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+                    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+                    <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+                    <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+                    <track kind="captions" src="../static/shared/example-captions.vtt" srclang="en" label="English"></track>
+                    <!-- Tracks need an ending tag thanks to IE9 -->
+                    <track kind="subtitles" src="../static/shared/example-captions.vtt" srclang="en" label="English"></track>
+                    <!-- Tracks need an ending tag thanks to IE9 -->
+                    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                </video>
+            </div>
+            <div class="sm-width-100-per sm-height-30-per sm-margin-top-1rem black"></div>
+        </div>
+    </div>
+</div>
+<div id="pak" class="app-background-grey">
+    <div id="pakVue" class="sm-width-100-per sm-height-100-per" style="margin-top: -31rem;">
+        <!-- 上传考勤数据 -->
+        <div class="col s12 m3">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">上传考勤数据</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action sm-layout-center-horizontal">
+                    <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
+                    <div class="preloader-wrapper small active sm-margin-left-1rem">
+                        <div class="spinner-layer spinner-green-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- 下载员工基础数据 -->
-                <div class="col s12 m3">
-                    <div class="card white">
-                        <div class="card-content black-text">
-                            <span class="card-title">下载员工基础数据</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <!-- 下载员工基础数据 -->
+        <div class="col s12 m3">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">下载员工基础数据</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
                 </div>
-                <!-- 更新员工信息 -->
-                <div class="col s12 m3">
-                    <div class="card white">
-                        <div class="card-content black-text">
-                            <span class="card-title">更新员工信息</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
-                        </div>
-                    </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
                 </div>
-                <!-- 任务处理反馈 -->
-                <div class="col s12 m3">
-                    <div class="card white">
-                        <div class="card-content black-text">
-                            <span class="card-title">任务处理反馈</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <!-- 更新员工信息 -->
+        <div class="col s12 m3">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">更新员工信息</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
                 </div>
-                <!-- 初始化指纹信息 -->
-                <div class="col s12 m3">
-                    <div class="card white">
-                        <div class="card-content black-text">
-                            <span class="card-title">初始化指纹信息</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
-                        </div>
-                    </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
                 </div>
-                <!-- 设置工地名称 -->
-                <div class="col s12 m3">
-                    <div class="card white">
-                        <div class="card-content black-text">
-                            <span class="card-title">设置工地名称</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <!-- 任务处理反馈 -->
+        <div class="col s12 m3">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">任务处理反馈</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
                 </div>
-                <!-- 同步服务器时间 -->
-                <div class="col s12 m3">
-                    <div class="card white">
-                        <div class="card-content black-text">
-                            <span class="card-title">同步服务器时间</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
-                        </div>
-                    </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
+                </div>
+            </div>
+        </div>
+        <!-- 初始化指纹信息 -->
+        <div class="col s12 m3">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">初始化指纹信息</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
+                </div>
+            </div>
+        </div>
+        <!-- 设置工地名称 -->
+        <div class="col s12 m3">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">设置工地名称</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
+                </div>
+            </div>
+        </div>
+        <!-- 同步服务器时间 -->
+        <div class="col s12 m3">
+            <div class="card white">
+                <div class="card-content black-text">
+                    <span class="card-title">同步服务器时间</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn"><i class="material-icons left">check</i>提交</a>
                 </div>
             </div>
         </div>
@@ -498,11 +568,16 @@
 </body>
 <script th:src="@{/js/jquery-3.2.1.min.js}" src="../static/js/jquery-3.2.1.min.js"></script>
 <script th:src="@{/js/materialize/materialize.min.js}" src="../static/js/materialize/materialize.min.js"></script>
-<script th:src="@{/js/fullpage/jquery.fullpage.min.js}" src="../static/js/fullpage/jquery.fullpage.min.js"></script>
 <script th:src="@{/js/vue/vue.js}" src="../static/js/vue/vue.js"></script>
+<script th:src="@{/js/videojs/videojs-ie8.min.js}" src="../static/js/videojs/videojs-ie8.min.js"></script>
+<script th:src="@{/js/videojs/video.min.js}" src="../static/js/videojs/video.min.js"></script>
 <script th:src="@{/js/echarts/echarts.js}" src="../static/js/echarts/echarts.js"></script>
+<script th:src="@{/js/dispatcher/vars.js}" src="../static/js/dispatcher/vars.js"></script>
+<script th:src="@{/js/dispatcher/componentInitialization.js}" src="../static/js/dispatcher/componentInitialization.js"></script>
+<script th:src="@{/js/dispatcher/eChartsInitialization.js}" src="../static/js/dispatcher/eChartsInitialization.js"></script>
+<script th:src="@{/js/dispatcher/webSocketInitialization.js}" src="../static/js/dispatcher/webSocketInitialization.js"></script>
+<script th:src="@{/js/dispatcher/vueInitialization.js}" src="../static/js/dispatcher/vueInitialization.js"></script>
 <script th:src="@{/js/index.js}" src="../static/js/index.js"></script>
 <script type="text/javascript">
-
 </script>
 </html>

@@ -1,5 +1,6 @@
 package com.hxjd.handler.receiver.socket.netty;
 
+import com.hxjd.utils.MyPath;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -9,11 +10,10 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.ClassUtils;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +47,24 @@ public final class DataReceiveServer
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             logger.info("硬件数据接收服务已经启动");
+
+            //logger.info("调试信息：" + ClassUtils.getDefaultClassLoader().getResource("").getPath());
+//            InputStream inputStream = this.getClass().getResourceAsStream(MyPath.getProjectPath() + "/configs/port.txt");
+//            File file = new File(MyPath.getProjectPath() + "/configs/port.txt");
+////            inputStream = file.getAbsolutePath();
+//            try
+//            {
+//                byte[] test = readStream(inputStream);
+//                logger.info("调试信息：" + new String(test));
+////                logger.info("getProjectPath调试信息：" + MyPath.getProjectPath());
+////                logger.info("getRealPath调试信息：" + MyPath.getRealPath());
+////                logger.info("getAppPath调试信息：" + MyPath.getAppPath(this.getClass()));
+//            }
+//            catch(Exception e)
+//            {
+//                e.printStackTrace();
+//                logger.info("调试信息：又出错" + e.getMessage());
+//            }
 
             // 绑定端口，开始接收进来的连接
             ChannelFuture f = b.bind(port).sync();

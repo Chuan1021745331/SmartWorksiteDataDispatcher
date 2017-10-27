@@ -105,4 +105,10 @@ public class EnvData extends BaseData
     {
         this.serialNo = serialNo;
     }
+    
+    public void dispatchError()
+    {
+        //因为数据一个无法转发，则所有都无法转发，故这里只取第一个数据进行处理
+        this.temperature += "err";
+    }
 }

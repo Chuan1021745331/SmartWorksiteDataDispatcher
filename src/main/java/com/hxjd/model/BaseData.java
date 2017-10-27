@@ -1,5 +1,9 @@
 package com.hxjd.model;
 
+import com.hxjd.utils.SDTimeUtil;
+
+import java.time.LocalDateTime;
+
 /**
  * Time: 11:15
  * Date: 2017/9/19
@@ -15,6 +19,11 @@ public abstract class BaseData
     private String sourceId = "null";//来源数据id，外部系统跟踪数据用
     private String deviceCode = "null";//设备物理编号
     private String recordTime = "null";//采集时间
+
+    public BaseData()
+    {
+        this.recordTime = LocalDateTime.now().format(SDTimeUtil.dateTimeFormatter);
+    }
 
     public String getProjectCode()
     {

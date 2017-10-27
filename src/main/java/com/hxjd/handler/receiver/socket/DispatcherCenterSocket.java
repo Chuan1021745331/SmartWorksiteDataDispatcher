@@ -26,8 +26,8 @@ public class DispatcherCenterSocket extends DataReceiveServerHandler
     {
         EnvDBService envDBService = applicationContext.getBean(EnvDBService.class);
         EnvData envData = new EnvData();
-        envData.setRecordTime("hhhhhh");
-        envData.setHumidity("a");
+//        envData.setRecordTime("hhhhhh");
+//        envData.setHumidity("a");
         logger.debug(envDBService.save(envData) + "");
     }
 
@@ -37,6 +37,46 @@ public class DispatcherCenterSocket extends DataReceiveServerHandler
         EnvDBService envDBService = applicationContext.getBean(EnvDBService.class);
         EnvData envData = new EnvData();
         envData.setSerialNo(string);
-        logger.debug("######" + channelHandlerContext.channel().remoteAddress() + string + ":" + envDBService.save(envData));
+//        envData.setTemperature();
+//        envData.setHumidity();
+//        envData.setNoise();
+//        envData.setPm2p5();
+//        envData.setPm10();
+//        envData.setWindSpeed();
+//        envData.setWindDirection();
+        //#env#deviceId#deviceCode#temperature#humidity#pm2p5#pm10#noise#windSpeed#windDirection#
+        if(string.startsWith("#env#"))
+        {
+            System.out.println(string);
+            String[] envDataArr = string.split("#");
+            envData.setDeviceId(envDataArr[2]);
+            envData.setDeviceCode(envDataArr[3]);
+            envData.setTemperature(envDataArr[4]);
+            envData.setHumidity(envDataArr[5]);
+            envData.setPm2p5(envDataArr[6]);
+            envData.setPm10(envDataArr[7]);
+            envData.setNoise(envDataArr[8]);
+            envData.setWindSpeed(envDataArr[9]);
+            envData.setWindDirection(envDataArr[10]);
+        }
+        logger.debug("您发送的数据为：" +
+                "\r\n　deviceId：" + envData.getDeviceId() +
+                "\r\n　deviceCode：" + envData.getDeviceCode() +
+                "\r\n　temperature：" + envData.getTemperature() +
+                "\r\n　humidity：" + envData.getHumidity() +
+                "\r\n　pm2p5：" + envData.getPm2p5() +
+                "\r\n　pm10：" + envData.getPm10() +
+                "\r\n　noise：" + envData.getNoise() +
+                "\r\n　windSpeed：" + envData.getWindSpeed() +
+                "\r\n　windDirection：" + envData.getWindDirection());
+    }
+
+    public static void main(String[] args)
+    {
+        String t = "#env#deviceId#deviceCode#temperature#humidity#pm2p5#pm10#noise#windSpeed#windDirection#";
+        String[] tarr = t.split("#");
+        System.out.println(tarr[1]);
+        System.out.println(tarr[2]);
+        System.out.println(tarr[3]);
     }
 }

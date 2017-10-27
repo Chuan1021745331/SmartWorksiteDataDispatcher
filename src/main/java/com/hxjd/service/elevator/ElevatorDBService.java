@@ -28,18 +28,19 @@ public class ElevatorDBService
     @Autowired
     private ElevatorDao dao;
 
-    public void save(ElevatorData data)
+    public boolean save(ElevatorData data)
     {
         logger.info("开始保存升降机数据");
         try
         {
-            data.setRecordTime(LocalDateTime.now().format(SDTimeUtil.dateTimeFormatter));
             dao.add(data);
             logger.info("升降机数据保存成功");
+            return true;
         }
         catch(Exception e)
         {
             logger.error("升降机数据保存失败" + e);
+            return false;
         }
     }
 }
